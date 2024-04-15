@@ -1,0 +1,64 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "no-var": "warn",
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-use-before-define": 0,
+    "no-shadow": 0,
+    "react/no-array-index-key": "warn",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/require-default-props": "off",
+    "react/prop-types": 0,
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": ["arrow-function", "function-declaration"]
+      }
+    ],
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-pascal-case": "warn",
+    "react/jsx-key": "warn",
+    "react/jsx-curly-brace-presence": [
+      1,
+      {
+        "props": "never",
+        "children": "never"
+      }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/jsx-props-no-spreading": 0,
+    "import/extensions": 0,
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^React$",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ]
+  }
+}
