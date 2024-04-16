@@ -21,47 +21,51 @@ const config: Config = {
         return acc;
       }, {}),
     },
+    colors: {
+      transparent: 'transparent',
+      currentColor: 'currentColor',
+      white: 'var(--white)',
+      black: 'var(--black)',
+      inner: 'var(--inner)',
+      ring: 'var(--ring)',
+      background: 'var(--background)',
+      foreground: 'var(--foreground)',
+      primary: {
+        DEFAULT: 'var(--primary)',
+        accent: 'var(--primary-accent)',
+        surface: 'var(--primary-surface)',
+        foreground: 'var(--primary-foreground)',
+      },
+      secondary: {
+        DEFAULT: 'var(--secondary)',
+        accent: 'var(--secondary-accent)',
+        foreground: 'var(--secondary-foreground)',
+      },
+      muted: {
+        DEFAULT: 'var(--muted)',
+        foreground: 'var(--muted-foreground)',
+      },
+      border: {
+        DEFAULT: 'var(--border)',
+        accent: 'var(--border-accent)',
+      },
+      destructive: {
+        DEFAULT: 'var(--destructive)',
+        accent: 'var(--destructive-accent)',
+        foreground: 'var(--destructive-foreground)',
+      },
+      popover: {
+        DEFAULT: 'var(--popover)',
+        accent: 'var(--popover-accent)',
+        foreground: 'var(--popover-foreground)',
+      },
+      card: {
+        DEFAULT: 'var(--card)',
+        foreground: 'var(--card-foreground)',
+      },
+    },
     extend: {
       screens: { mobile: '768px', tablet: '1024px' },
-      colors: {
-        inner: 'var(--inner)',
-        ring: 'var(--ring)',
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        primary: {
-          DEFAULT: 'var(--primary)',
-          accent: 'var(--primary-accent)',
-          surface: 'var(--primary-surface)',
-          foreground: 'var(--primary-foreground)',
-        },
-        secondary: {
-          DEFAULT: 'var(--secondary)',
-          accent: 'var(--secondary-accent)',
-          foreground: 'var(--secondary-foreground)',
-        },
-        muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
-        },
-        border: {
-          DEFAULT: 'var(--border)',
-          accent: 'var(--border-accent)',
-        },
-        destructive: {
-          DEFAULT: 'var(--destructive)',
-          accent: 'var(--destructive-accent)',
-          foreground: 'var(--destructive-foreground)',
-        },
-        popover: {
-          DEFAULT: 'var(--popover)',
-          accent: 'var(--popover-accent)',
-          foreground: 'var(--popover-foreground)',
-        },
-        card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
-        },
-      },
     },
   },
   plugins: [],

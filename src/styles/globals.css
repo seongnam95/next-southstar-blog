@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+body > div:first-child {
+  height: 100%;
+}
+
+a,
+input,
+button {
+  outline: 0;
+}
+
 @layer base {
   :root {
     --primary: #7146fc;
@@ -80,10 +92,6 @@
     --white: #fff;
 
     --shadow-md: 0 6px 32px -8px rgba(40 40 40 / 0.2);
-  }
-
-  * {
-    @apply border-border;
   }
 
   body {

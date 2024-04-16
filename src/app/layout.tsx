@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { ThemeProvider } from '@/components/ThemeProvider';
+import Content from '@/layouts/Content';
 import Header from '@/layouts/Header';
 import '@/styles/globals.css';
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Header />
-          {children}
+          <Content>{children}</Content>
         </ThemeProvider>
       </body>
     </html>

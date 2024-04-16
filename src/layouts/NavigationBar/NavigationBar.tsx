@@ -1,6 +1,13 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { cn } from '@/lib/utils';
 
 const NavigationBar = () => {
+  const pathname = usePathname();
+
   const menuItems = [
     {
       key: 'home',
@@ -20,9 +27,14 @@ const NavigationBar = () => {
   ];
 
   return (
-    <nav className="">
+    <nav>
       {menuItems.map((item) => (
-        <NavigationBarItem key={item.key} title={item.title} path={item.path} />
+        <NavigationBarItem
+          key={item.key}
+          active={item.path === pathname}
+          title={item.title}
+          path={item.path}
+        />
       ))}
     </nav>
   );
@@ -31,11 +43,21 @@ const NavigationBar = () => {
 interface NavigationBarItemProps {
   title: string;
   path: string;
+  active?: boolean;
 }
 
-const NavigationBarItem = ({ title, path }: NavigationBarItemProps) => {
+const NavigationBarItem = ({ title, path, active }: NavigationBarItemProps) => {
   return (
-    <Link className="px-3 py-2 transition-colors duration-100 hover:text-primary" href={path}>
+    <Link
+      className={cn(
+        `
+        rounded-full px-3 py-1 text-sm transition-colors duration-100 hover:text-primary
+        focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background
+        `,
+        active && 'bg-primary-surface text-primary',
+      )}
+      href={path}
+    >
       {title}
     </Link>
   );

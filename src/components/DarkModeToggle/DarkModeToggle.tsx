@@ -16,9 +16,9 @@ export const DarkModeToggle = () => {
   };
 
   return (
-    <IconButton variant="ghost" size="lg" onClick={toggleTheme}>
-      <IoSunnyOutline className="hidden dark:block" />
-      <IoMoonOutline className="ml-2pxr dark:hidden" />
+    <IconButton variant="ghost" onClick={toggleTheme}>
+      <IoSunnyOutline className="hidden text-lg dark:block" />
+      <IoMoonOutline className="ml-2pxr text-lg dark:hidden" />
     </IconButton>
   );
 };

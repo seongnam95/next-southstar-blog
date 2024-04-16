@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 const iconButtonVariants = cva(
   `inline-flex items-center border justify-center font-medium transition-colors 
-  focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring 
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring 
   disabled:pointer-events-none disabled:opacity-60`,
   {
     variants: {
