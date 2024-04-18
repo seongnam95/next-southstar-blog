@@ -1,0 +1,198 @@
+---
+title: Twin.macro 시작하기 (with. typescript, emotion, vite)
+date: 2024-01-01
+description: Tailwind CSS의 유틸리티 클래스와 CSS-in-JS를 동시에 사용하기
+tags: [React, TypeScript, TailwindCSS]
+series: TailwindCSS
+---
+
+## 🙌 Twin.macro란?
+
+> emotion 또는 styled-components 작성 구문에 Tailwind CSS의 유틸리티 클래스를 사용할 수 있도록 돕는 라이브러리
+
+쉽게 말해, **Tailwind**의 **빠른 스타일링**과 css-in-js의 **유연성**을 **동시에** 누릴 수 있습니다.
+
+[twin.macro 공식문서](notion://www.notion.so/%22%3Chttps://github.com/ben-rogerson/twin.macro%3E%22)
+
+## ⚙️ 설치 및 세팅
+
+### 의존성 설치
+
+```
+yarn add @emotion/react @emotion/styled
+yarn add twin.macro @emotion/babel-plugin-jsx-pragmatic @babel/plugin-transform-react-jsx babel-plugin-macros tailwindcss --dev
+
+```
+
+### 프로젝트 세팅
+
+### babel 구성
+
+```jsx
+// A) babel-plugin-macros.config.js
+export default {
+  twin: {
+    preset: 'emotion',
+  },
+};
+```
+
+```jsx
+// B) package.json
+"babelMacros": {
+  "twin": {
+    "preset": "emotion"
+  }
+},
+
+```
+
+- \*A)**와 **B)\*\* 중 하나만 구성
+
+### vite.config 설정
+
+```tsx
+// vite.config.ts
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'es2020',
+    },
+  },
+  esbuild: {
+    logOverride: { 'this-is-undefined-in-esm': 'silent' },
+  },
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          'babel-plugin-macros',
+          [
+            '@emotion/babel-plugin-jsx-pragmatic',
+            {
+              export: 'jsx',
+              import: '__cssprop',
+              module: '@emotion/react',
+            },
+          ],
+          ['@babel/plugin-transform-react-jsx', { pragma: '__cssprop' }, 'twin.macro'],
+        ],
+      },
+    }),
+  ],
+});
+```
+
+### 타입 설정 (TypeScript)
+
+```tsx
+// types/twin.d.ts
+import { css as cssImport } from '@emotion/react';
+import { CSSInterpolation } from '@emotion/serialize';
+import styledImport from '@emotion/styled';
+import 'twin.macro';
+
+declare module 'twin.macro' {
+  const styled: typeof styledImport;
+  const css: typeof cssImport;
+}
+
+declare module 'react' {
+  interface DOMAttributes<T> {
+    tw?: string;
+    css?: CSSInterpolation;
+  }
+}
+```
+
+```tsx
+// tsconfig.ts
+{
+  "compilerOptions": {
+    // 기존 구성
+    "skipLibCheck": true,
+    "jsxImportSource": "@emotion/react"
+  },
+  // 기존 구성
+  "include": ["src", "types"]
+}
+
+```
+
+### Tailwind CSS 지시문 추가
+
+```
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+```
+
+## 🪄 사용방법
+
+### 기본 사용법
+
+```tsx
+import 'twin.macro';
+
+const Button = () => <button tw="bg-primary border hover:bg-primary-accent">버튼</button>;
+```
+
+### Props 값 사용
+
+```tsx
+import tw from 'twin.macro';
+
+interface ButtonProps {
+  width?: string;
+}
+
+const Button = ({ width }: ButtonProps) => (
+  <button css={[tw`bg-primary border hover:bg-primary-accent`, { width: width }]}>버튼</button>
+);
+```
+
+### Emotion + Tailwind 상속 스타일링
+
+```tsx
+import tw from 'twin.macro';
+
+const ButtonStyled = tw.button`
+  bg-primary border rounded-md
+  px-4 py-2 hover:bg-primary-accent
+`;
+
+const Button = () => <ButtonStyled>버튼</ButtonStyled>;
+```
+
+```tsx
+import tw from 'twin.macro';
+
+const ButtonStyled = tw(button)`
+  bg-primary border rounded-md
+  px-4 py-2 hover:bg-primary-accent
+`;
+
+const Button = () => <ButtonStyled>버튼</ButtonStyled>;
+```
+
+### 상속 + 동적 스타일링
+
+```tsx
+import tw, { styled } from 'twin.macro';
+
+interface ButtonStyledProps {
+  hidden?: boolean;
+}
+
+const ButtonStyled = styled.button<ButtonStyledProps>(({ hidden }) => [
+  tw`bg-primary border hover:bg-primary-accent`,
+  hidden && tw`hidden`,
+]);
+
+const Button = () => <ButtonStyled hidden>버튼</ButtonStyled>;
+```

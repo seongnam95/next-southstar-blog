@@ -1,0 +1,191 @@
+---
+title: Github 블로그 만들기 (1) - Gatsby 프로젝트 생성
+date: 2024-01-09
+description: 마이그레이션 그리고 리뉴얼, 기능 추가하기마이그레이션 그리고 리뉴얼, 기능 추가하기마이그레이션 그리고 리뉴얼, 기능 추가하기
+tags: [React, TypeScript]
+series: 마이그레이션
+---
+
+> 본 게시글은 **TypeScript**, **Tailwind CSS** 환경에서 진행됩니다.
+
+들어가기 앞서 [Node.js](https://nodejs.org/en/download)와 [Git 설치](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EC%84%A4%EC%B9%98)가 되어 있어야 하며, [GitHub 계정](https://github.com/)이 없다면 생성해주시면 됩니다.
+
+## 1. Gatsby-CLI 설치
+
+먼저, Gatsby의 명령어를 사용하기 위해 **gatsby-cli** 를 글로벌 설치합니다.
+
+```bash title="test"
+npm install -g gatsby-cli
+```
+
+굳이 **gatsby-cli** 를 설치하지 하고 싶지 않다면 **npx** 를 이용해 Gatsby 명령어를 사용할 수 있습니다.
+
+```bash
+npx gatsby-cli [명령어]
+```
+
+## 2. Gatsby Starter
+
+### 2-1. 🤷‍♂️ Gatsby Stater란?
+
+> Gaysby 프로젝트를 빠르게 구성할 수 있는 템플릿
+
+- [기본 스타터 (gatsby-starter-default)](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default)
+- [블로그 스타터 (gatsby-starter-blog)](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-blog)
+
+이 외에도 [여러가지의 스타터](https://www.gatsbyjs.com/starters)를 공식적으로 제공하고 있습니다. 빠르게 사이트를 구축하고 싶다면 취향에 맞는 스타터로 시작하셔도 좋습니다.
+
+### 2-2. 🙋🏻 다른 스타터는 없나요?
+
+- [Bee 스타터 (gatsby-starter-bee)](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default)
+
+Bee는 한재엽님이 제작한 스타터로 블로그에 필요한 **다양한 기능들을 제공**하며 디자인도 이쁩니다. 그덕에 블로그 명칭만 바꿔줘도 **즉시 블로그를 운영**해도 손색이 없을 정도입니다.
+
+개인이 제작한 스타터 중에선 제일 유명하지만, 현업이 바쁘셔서 **업데이트**가 어려울 것 같다는 소식이 있기도 하고, **처음부터 하나하나 구축**해 나아가는 게 저에게 **도움이 될 것 같아서** 사용하지 않았습니다.
+
+스타터를 사용하려면 아래 명령어를 사용합니다.
+
+```bash
+gatsby new [blog-name] [starter-url]
+```
+
+## 3. Gatsby 설치하기
+
+```bash
+gatsby new
+```
+
+명령어를 입력하면 프로젝트를 구성할 수 있는 Input이 나타나는데요, 개발하고자 하는 프로젝트 구성 항목을 입력하여 프로젝트를 생성합니다.
+
+```
+# 사이트 명칭
+What would you like to call your site?
+? › SouthStar Blog
+```
+
+```
+# 생성될 프로젝트 폴더명
+What would you like to name the folder where your site will be created?
+? Project/ south-star-blog
+```
+
+```
+# 사용할 스크립트 선택 (방향키로 이동)
+Will you be using JavaScript or TypeScript?
+  JavaScript
+> TypeScript
+```
+
+```
+# CMS 선택 (일단 스킵, 나중에 설정 가능)
+Will you be using a CMS?
+> No (or I'll add it later)
+  –
+  Contentful
+  DatoCMS
+  Netlify CMS
+  Sanity
+  Shopify
+  WordPress
+```
+
+```
+# 스타일링 라이브러리 선택
+Would you like to install a styling system?
+  No (or I'll add it later)
+  –
+  Emotion
+  PostCSS
+  Sass
+  styled-components
+  Theme UI
+  vanilla-extract
+> Tailwind CSS
+```
+
+```
+# 플러그인 추가 설치 (스페이스바로 다중 선택 가능, 일단 스킵)
+Would you like to install additional features with other plugins?
+ ◯ Add the Google gtag script for e.g. Google Analytics
+ ◯ Add responsive images
+ ◯ Add an automatic sitemap
+ ◯ Generate a manifest file
+ ◯ Add Markdown and MDX support
+ ◯ Add Markdown support (without MDX)
+  ─────
+> Done
+```
+
+![](https://velog.velcdn.com/images/southstar/post/3fc79f14-0e41-4410-bd01-487baa3045e7/image.png)
+
+설정이 완료 되었으면 위 사진처럼 구성 된 항목을 확인시켜줍니다. Y를 누르면 설치가 진행됩니다.
+
+![](https://velog.velcdn.com/images/southstar/post/13994184-2d33-4df4-91ac-847e601195ae/image.png)
+
+## 4. 로컬 서버 실행
+
+Gatsby 프로젝트 생성은 끝났습니다. 해당 디렉토리로 이동해 로컬 서버를 가동할 수 있습니다.
+
+```bash
+cd [blog-folder-name]
+npm run start
+```
+
+![](https://velog.velcdn.com/images/southstar/post/075859e4-53de-4d2a-8847-3bad855ec31b/image.png)
+
+![](https://velog.velcdn.com/images/southstar/post/a9ab9444-b11e-4068-b67c-d5751a4af097/image.png)
+
+## 5. GitHub 배포
+
+### 5-1. Repository 생성
+
+현재 로컬에만 프로젝트가 생성 된 상태로, GitHub 저장소에도 프로젝트를 업로드 해주어야 합니다.
+
+[GitHub](https://github.com/)에 로그인 후, **New** 버튼을 눌러 새 저장소를 생성합니다.
+
+![](https://velog.velcdn.com/images/southstar/post/1e16629d-08e9-4a33-931f-b5953467421d/image.png)
+
+**Repository name**
+생성될 **저장소의 명칭**입니다. **github.io** 까지 적어주어야 blog-name.github.io 도메인을 이용할 수 있습니다.
+
+**Public/Private**
+저장소 **외부 공유 여부**입니다. 비공개로 생성해도 github.io 도메인을 사용할 수 있지만, **덧글 기능**을 사용하려면 **Public 저장소**를 **추가로 생성**해주어야 합니다. 꼭 비공개로 저장소를 개설할 이유가 없다면 Public으로 생성하면 됩니다.
+
+이외의 항목들은 기본 값 그대로 둔 상태로 **Create repository** 버튼을 눌러 저장소를 생성합니다.
+
+### 5-2. 프로젝트 업로드
+
+저장소가 생성을 마쳤으면 Gatsby 프로젝트를 업로드 해주어야 배포가 완료됩니다.
+
+#### 1) Git 초기화
+
+**gatsby new** 명령어로 프로젝트를 생성하면 **.git** 폴더도 같이 생성됩니다. 삭제 후 새로 **.git** 폴더를 생성합니다.
+
+```bash
+cd [blog-folder-name]
+
+# 윈도우
+rmdir /s /q .git
+
+# Mac OS
+rm -rf .git
+
+git init
+```
+
+#### 2) 업로드
+
+![](https://velog.velcdn.com/images/southstar/post/07b04bbb-0dde-46d7-a370-09d4ed2b0f56/image.png)
+
+[repositiory-url] 은 생성된 저장소에서 확인할 수 있습니다. 아래 명령어를 입력해 프로젝트를 업로드합니다.
+
+```bash
+git add .
+git commit -m "init blog"
+git remote add origin [repository-url]
+git push -u origin main
+```
+
+이제, 저장소를 확인해보면 정상적으로 프로젝트가 업로드 된 걸 볼 수 있습니다.
+
+![](https://velog.velcdn.com/images/southstar/post/b98d6d7e-08ad-47bb-947b-675ba2fcbcbf/image.png)

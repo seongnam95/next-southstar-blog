@@ -3,24 +3,22 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 
-import { ComponentPropsWithout, RemovedProps } from '@/helpers/component_props';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
+import { ComponentPropsWithout, RemovedProps } from '@/types/component_props';
 
-const headingVariants = cva('font-bold', {
+const headingVariants = cva('scroll-mt-6', {
   variants: {
     level: {
-      '1': 'text-xs',
-      '2': 'text-sm',
-      '3': 'text-base',
-      '4': 'text-lg',
-      '5': 'text-2xl',
-      '6': 'text-3xl',
-      '7': 'text-4xl',
-      '8': 'text-5xl',
-      '9': 'text-6xl',
+      '1': 'text-3xl',
+      '2': 'text-2xl',
+      '3': 'text-lg',
+      '4': 'text-base',
+      '5': 'text-sm',
+      '6': 'text-xs',
     },
     weight: {
       normal: 'font-normal',
+      semi: 'font-semibold',
       bold: 'font-bold',
       extra: 'font-extrabold',
       black: 'font-black',
@@ -31,7 +29,7 @@ const headingVariants = cva('font-bold', {
       right: 'text-right',
     },
   },
-  defaultVariants: { level: '5', align: 'left', weight: 'bold' },
+  defaultVariants: { level: '5', align: 'left', weight: 'semi' },
 });
 
 type HeadingElement = React.ElementRef<'h1'>;

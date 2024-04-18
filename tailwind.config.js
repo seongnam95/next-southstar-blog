@@ -1,22 +1,22 @@
-import type { Config } from 'tailwindcss';
+import Typography from '@tailwindcss/typography';
 
-const numToRem = (num: number): string => `${(num / 0.5) * 0.125}rem`;
-const pxToRem = (px: number, base: number = 16): string => `${px / base}rem`;
-const range = (start: number, end: number, unit: number = 1): number[] => {
+const numToRem = (num) => `${(num / 0.5) * 0.125}rem`;
+const pxToRem = (px, base = 16) => `${px / base}rem`;
+const range = (start, end, unit = 1) => {
   const length = Math.ceil((end - start) / unit + 1);
   return Array.from({ length }, (_, i) => start + i * unit);
 };
 
-const config: Config = {
+const config = {
   darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     spacing: {
-      ...range(1, 100).reduce((acc: Record<string, string>, px) => {
+      ...range(1, 100).reduce((acc, px) => {
         acc[`${px}pxr`] = pxToRem(px);
         return acc;
       }, {}),
-      ...range(0, 50, 0.5).reduce((acc: Record<string, string>, px) => {
+      ...range(0, 50, 0.5).reduce((acc, px) => {
         acc[`${px}`] = numToRem(px);
         return acc;
       }, {}),
@@ -29,7 +29,10 @@ const config: Config = {
       inner: 'var(--inner)',
       ring: 'var(--ring)',
       background: 'var(--background)',
-      foreground: 'var(--foreground)',
+      foreground: {
+        DEFAULT: 'var(--foreground)',
+        accent: 'var(--foreground-accent)',
+      },
       primary: {
         DEFAULT: 'var(--primary)',
         accent: 'var(--primary-accent)',
@@ -64,10 +67,17 @@ const config: Config = {
         foreground: 'var(--card-foreground)',
       },
     },
+    screens: { mobile: '768px', tablet: '1024px' },
     extend: {
-      screens: { mobile: '768px', tablet: '1024px' },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [Typography],
 };
 export default config;

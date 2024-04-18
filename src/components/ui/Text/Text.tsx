@@ -3,30 +3,27 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps, cva } from 'class-variance-authority';
 
-import { ComponentPropsWithout, RemovedProps } from '@helpers/component_props';
+import { cn } from '@/lib/cn';
+import { ComponentPropsWithout, RemovedProps } from '@/types/component_props';
 
-import { cn } from '@lib/utils';
-
-const textVariants = cva('', {
+const textVariants = cva('text-foreground', {
   variants: {
     size: {
-      default: 'text-sm',
+      default: 'text-base',
       xs: 'text-xs',
-      sm: 'text-[13px]',
-      md: 'text-base',
+      sm: 'text-sm',
       lg: 'text-lg',
       xl: 'text-xl',
     },
     weight: {
       normal: 'font-normal',
-      bold: 'font-bold',
-      extra: 'font-extrabold',
-      black: 'font-black',
+      bold: 'font-bold text-foreground-accent',
+      extra: 'font-extrabold text-foreground-accent',
+      black: 'font-black text-foreground-accent',
     },
-    color: {
-      default: '',
-      muted: 'text-muted-foreground',
-      hint: 'text-muted-foreground/80',
+    muted: {
+      false: '',
+      true: 'text-muted-foreground',
     },
     align: {
       left: 'text-left',
@@ -45,9 +42,9 @@ const textVariants = cva('', {
   defaultVariants: {
     size: 'default',
     weight: 'normal',
-    color: 'default',
+    muted: false,
     align: 'left',
-    whiteSpace: 'nowrap',
+    whiteSpace: 'normal',
   },
 });
 
@@ -56,20 +53,21 @@ type TextAsChildProps = { asChild: true; as?: never } & ComponentPropsWithout<'s
 type TextSpanProps = { as?: 'span'; asChild?: false } & ComponentPropsWithout<'span', RemovedProps>;
 type TextDivProps = { as: 'div'; asChild?: false } & ComponentPropsWithout<'div', RemovedProps>;
 type TextLabelProps = { as: 'label'; asChild?: false } & ComponentPropsWithout<'label', RemovedProps>;
+type TextStrongProps = { as: 'strong'; asChild?: false } & ComponentPropsWithout<'strong', RemovedProps>;
 type TextPProps = { as: 'p'; asChild?: false } & ComponentPropsWithout<'p', RemovedProps>;
 
 type TextProps = VariantProps<typeof textVariants> &
-  (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextPProps);
+  (TextAsChildProps | TextSpanProps | TextDivProps | TextLabelProps | TextStrongProps | TextPProps);
 
 const Text = React.forwardRef<TextElement, TextProps>(
   (
-    { className, children, size, weight, color, align, whiteSpace, asChild, as: Tag = 'span', ...textProps },
+    { className, children, size, weight, muted, align, whiteSpace, asChild, as: Tag = 'span', ...textProps },
     ref,
   ) => (
     <Slot
       {...textProps}
       ref={ref}
-      className={cn(textVariants({ size, weight, color, align, whiteSpace, className }))}
+      className={cn(textVariants({ size, weight, muted, align, whiteSpace, className }))}
     >
       {asChild ? children : <Tag>{children}</Tag>}
     </Slot>

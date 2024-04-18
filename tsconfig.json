@@ -21,12 +21,8 @@
 
     "baseUrl": "./",
     "paths": {
-      "@/layouts/*": ["./src/layouts/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/styles/*": ["./src/styles/*"],
-      "@/stores/*": ["./src/stores/*"],
+      "@/*": ["./src/*"],
+      "@/ui*": ["./src/components/ui/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
       "contentlayer/generated/*": ["./.contentlayer/generated/*"]
     }

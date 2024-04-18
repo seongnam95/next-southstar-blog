@@ -1,7 +1,7 @@
 import { DarkModeToggle } from '@/components/DarkModeToggle';
-import { Flex } from '@/components/Flex';
 import Logo from '@/components/Logo';
 import NavigationBar from '@/layouts/NavigationBar';
+import { Flex } from '@/ui/Flex';
 
 const Header = () => {
   return (

@@ -3,21 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 
 const NavigationBar = () => {
   const pathname = usePathname();
 
   const menuItems = [
     {
-      key: 'home',
-      title: 'Home',
-      path: '/',
-    },
-    {
-      key: 'blog',
-      title: 'Blog',
-      path: '/blog',
+      key: 'post',
+      title: 'Post',
+      path: '/post',
     },
     {
       key: 'about',
@@ -31,7 +26,7 @@ const NavigationBar = () => {
       {menuItems.map((item) => (
         <NavigationBarItem
           key={item.key}
-          active={item.path === pathname}
+          active={pathname.startsWith(item.path)}
           title={item.title}
           path={item.path}
         />

@@ -1,0 +1,32 @@
+:root {
+  .prose {
+    --tw-prose-body: var(--foreground);
+    --tw-prose-headings: var(--foreground-accent);
+    --tw-prose-lead: #4b5563;
+    --tw-prose-links: var(--primary);
+    --tw-prose-bold: var(--foreground-accent);
+    --tw-prose-counters: #6b7280;
+    --tw-prose-bullets: #d1d5db;
+    --tw-prose-hr: var(--foreground);
+    --tw-prose-quotes: var(--muted-foreground);
+    --tw-prose-quote-borders: var(--primary);
+    --tw-prose-captions: #6b7280;
+    --tw-prose-kbd: var(--foreground-accent);
+    --tw-prose-kbd-shadows: 17 24 39;
+    --tw-prose-code: var(--foreground-accent);
+    --tw-prose-pre-code: var(--foreground);
+    --tw-prose-pre-bg: var(--muted);
+    --tw-prose-th-borders: var(--border);
+    --tw-prose-td-borders: var(--border-accent);
+
+    /* code title */
+    figcaption[data-rehype-pretty-code-title] {
+      @apply mt-3 rounded-t-lg bg-muted px-3 py-2 text-sm text-muted-foreground;
+      user-select: none;
+    }
+
+    figcaption[data-rehype-pretty-code-title] + pre {
+      @apply mt-0 rounded-t-none;
+    }
+  }
+}

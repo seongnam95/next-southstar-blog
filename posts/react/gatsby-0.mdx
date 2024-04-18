@@ -1,0 +1,104 @@
+---
+title: Github 블로그 만들기 (0) - 왜 Gatsby 인가요?
+date: 2024-01-05
+description: 마이그레이션 그리고 리뉴얼, 기능 추가하기마이그레이션 그리고 리뉴얼, 기능 추가하기마이그레이션 그리고 리뉴얼, 기능 추가하기
+tags: [React, TypeScript, Gatsby, Blog]
+series: Gatsby
+---
+
+## 🤷‍♂️ 왜 Gatsby를 선택하게 되었나요?
+
+개발자들이 주로 사용하는 여러 블로그 플랫폼을 **비교**해 보았습니다. 첫 블로그 개설인 만큼 많은 고민을 했고 선택의 조건도 까다로웠습니다.
+
+1. 인터페이스가 깔끔한지?
+2. 테마 커스텀이 가능한지?
+3. 글 작성이 편리한지?
+4. 개발 친화적인지?
+5. 구글 노출이 잘 되는지?
+
+위 다섯 가지 조건에 최대한 부합한 플랫폼을 찾다 보니 [Velog](notion://www.notion.so/'%3Chttps://velog.io%3E'), [Tistory](notion://www.notion.so/'%3Chttps://tistory.com%3E'), [GitHub.io](notion://www.notion.so/'%3Chttps://github.io%3E') 이 세 가지 블로그가 가장 마음에 들었고, 모두 둘러본 결과 **Github Page**가 저의 블로그 개설 목적에 가장 **적합**하다는 판단이 들었습니다.
+
+## 😅 블로그 선택을 위한 여정
+
+### Velog
+
+> 프론트엔드 개발자 Velopert님이 개발한 개발자 전용 블로그로, 이쁘고 간편함
+
+!https://velog.velcdn.com/images/haul-dev/post/d4b10f61-3626-416c-b76a-45227263324b/image.png
+
+기본적으로 **마크다운** 문법을 이용해 글을 작성하지만 HTML 태그도 지원하기에 **빠르고 간편**하게 글을 **작성**할 수 있었고, 포스팅될 게시글을 **실시간**으로 볼 수 있다는 점이 좋았습니다.
+
+호불호가 적은 **깔끔한 인터페이스**를 제공하고, 로그인만 한다면 **간단하게 포스팅**이 가능하기에 글 작성이 메인이라면 [Velog](https://velog.io/)만 한 블로그가 없다고 생각합니다.
+
+하지만 저는 테마 커스텀 욕구가 강했기 때문에 **테마 커스텀이 불가능**하단 점은 큰 단점으로 다가왔습니다.
+
+두번째로, 게시글이 오직 **태그로만 분류**됩니다. 카테고리로도 분류하고 싶었지만 지원하지 않습니다.
+
+### Tistory
+
+> 여러 가지 기본 테마를 제공하며 HTML, CSS, JavaScript를 직접 편집/작성할 수 있음
+
+!https://velog.velcdn.com/images/haul-dev/post/2694dff7-4011-4876-86c8-76b2d098b6dd/image.png
+
+티스토리는 **기본 모드**/**마크다운**/**HTML** 세 가지의 글쓰기 에디터를 지원하고, <u>태그</u>와 <u>카테고리</u> 분류를 **모두 지원**합니다.
+
+또한, HTML과 CSS 뿐만 아니라 jquery를 이용한 **javascript** 까지 직접 <u>추가 및 편집</u>할 수 있기 때문에 **자유도**가 높습니다.
+
+테마를 커스텀하기 위해선 기존 테마의 **전체적인 구조를 파악**한 뒤, 개발자 모드(<u>Ctrl+Shift+C</u>)로 수정하고 싶은 엘리먼트의 class명을 찾은 후 CSS 탭에 들어가 **일일히 수정**해주어야 합니다.
+
+저는 다크모드를 추가하고 싶었고, 조금이나마 유지보수를 편히 하기 위해 아래와 같은 themes.css 파일을 추가해주었습니다.
+
+```css
+/* themes.css */
+.theme-light {
+  --background-body: #fff;
+  --background-head-foot: #f6f8fa;
+
+  --primary: #20c997;
+  --primary-foreground: #fff;
+  --primary-muted: #6fd4ad;
+  --primary-accent: #00bd8c;
+  --primary-surface: #00d17421;
+
+  --foreground: #1e1f24;
+  --foreground-muted: #62636c;
+
+  --border: #eff0f3;
+  --border-accent: #cdced7;
+
+  --inner: #f9f9fb;
+  --inner-alpha: #00005506;
+}
+
+.theme-dark {
+  --background-body: #121212;
+  --background-head-foot: #292a2e;
+
+  --primary: #2bb189;
+  --primary-foreground: #fff;
+  --primary-muted: #2e7e64;
+  --primary-accent: #13a57e;
+  --primary-surface: #00ffaa1e;
+
+  --foreground: #eeeef0;
+  --foreground-muted: #b2b3bd;
+
+  --border: #222325;
+  --border-accent: #46484f;
+
+  --inner: #222325;
+  --inner-alpha: #d6e2f916;
+}
+```
+
+티스토리에서 제공하는 HTML 편집 에디터에선 HTML과 CSS **두 개의 파일만** 수정할 수 있습니다. <u>파일업로드</u> 탭에서 css, javascript 등을 추가할 수 있지만 **별도의 에디터로 작성** 후 업로드해야 하며, 수정이 필요 할 땐 수정 된 파일을 **재업로드** 해주어야 하는 **번거로움**이 있습니다.
+
+몰론 위와 같은 노가다 커스텀 말고 <u>TypeScript</u>와 <u>Tailwind CSS</u>를 사용해 **직접 테마를 개발**할 수도 있지만, 이럴 바엔 저에게 익숙한 **React**를 이용해 **[GitHub.io](http://github.io/) 블로그 개발**하는 게 여러모로 좋을 것 같단 판단이 들었습니다.
+
+### GitHub.io
+
+GitHub Page로 블로그를 개설하려면 **많은 시간을 투자**해야 합니다. 구축을 돕기 위한 여러 프레임워크가 있지만 결국 <u>Frontend 코드에 익숙해야 하기 때문</u>에 다른 블로그 전용 플랫폼들에 비해 **진입장벽**이 높습니다.
+
+진입장벽이 높은 만큼 레이아웃, 버튼, 테마 등을 모두 **입맛대로 구성**할 수 있을 뿐더러, React 기반의 Gatsby 프레임워크를 사용한다면 기존의 **React 프로젝트 개발 방식과 유사**하게 블로그를 개설할 수 있습니다.
+
+처음부터 끝까지 직접 개발하기 때문에 **플랫폼 의존성이 적고**, 높은 자유도로 원하는 기능을 모두 추가할 수 있으며, 무엇보다 저에게 익숙한 **React를 사용**할 수 있다는 점이 큰 메리트로 다가왔습니다.

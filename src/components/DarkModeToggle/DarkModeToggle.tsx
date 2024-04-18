@@ -6,7 +6,7 @@ import { IoMoonOutline, IoSunnyOutline } from 'react-icons/io5';
 
 import { useTheme } from 'next-themes';
 
-import { IconButton } from '@/components/IconButton';
+import { IconButton } from '@/ui/IconButton';
 
 export const DarkModeToggle = () => {
   const { resolvedTheme, setTheme } = useTheme();
