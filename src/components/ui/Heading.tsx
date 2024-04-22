@@ -6,7 +6,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/cn';
 import { ComponentPropsWithout, RemovedProps } from '@/types/component_props';
 
-const headingVariants = cva('scroll-mt-6', {
+const headingVariants = cva('scroll-mt-6 text-foreground-accent', {
   variants: {
     level: {
       '1': 'text-3xl',

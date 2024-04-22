@@ -7,6 +7,8 @@ import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 
+import remarkHighlight from './remarkHighlight';
+
 const postFields: FieldDefs = {
   title: { type: 'string', description: 'The title of the post', required: true },
   description: { type: 'string', required: true },
@@ -48,7 +50,7 @@ export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkBreaks],
+    remarkPlugins: [remarkGfm, remarkBreaks, remarkHighlight],
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,

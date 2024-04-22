@@ -3,11 +3,11 @@
     --tw-prose-body: var(--foreground);
     --tw-prose-headings: var(--foreground-accent);
     --tw-prose-lead: #4b5563;
-    --tw-prose-links: var(--primary);
+    --tw-prose-links: var(--foreground-accent);
     --tw-prose-bold: var(--foreground-accent);
     --tw-prose-counters: #6b7280;
     --tw-prose-bullets: #d1d5db;
-    --tw-prose-hr: var(--foreground);
+    --tw-prose-hr: var(--border);
     --tw-prose-quotes: var(--muted-foreground);
     --tw-prose-quote-borders: var(--primary);
     --tw-prose-captions: #6b7280;
@@ -69,6 +69,19 @@
 
     :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
       @apply text-foreground-accent decoration-border-accent underline-offset-2;
+    }
+
+    :where(a.external-link):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+      &::after {
+        @apply ml-1 inline-block h-4 w-4 align-middle content-[''];
+        background: url('data:image/svg+xml, <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="%23374151" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="%23374151" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>');
+      }
+    }
+
+    :where(.dark a.external-link):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+      &::after {
+        background: url('data:image/svg+xml, <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="%23b0b0b0" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="%23b0b0b0" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>');
+      }
     }
   }
 }
