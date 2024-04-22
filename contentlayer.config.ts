@@ -52,6 +52,7 @@ export default makeSource({
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,
+      [rehypePrettyCode as any, rehypeOptions],
       [
         rehypeAutolinkHeadings,
         {
@@ -60,7 +61,6 @@ export default makeSource({
           },
         },
       ],
-      [rehypePrettyCode as any, rehypeOptions],
     ],
   },
 });

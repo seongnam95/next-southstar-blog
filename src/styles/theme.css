@@ -35,6 +35,18 @@
   --black: #121212;
   --white: #fff;
 
+  --info: #009ceb1a;
+  --info-foreground: #003b59;
+
+  --tip: #02f99920;
+  --tip-foreground: #005937;
+
+  --warn: #f7be6824;
+  --warn-foreground: #4d361a;
+
+  --danger: #ff41331a;
+  --danger-foreground: #821006;
+
   --shadow-md: 0 6px 32px -8px rgba(160 160 160 / 0.2);
   --radius: 7px;
 }
@@ -75,6 +87,18 @@
 
   --black: #121212;
   --white: #fff;
+
+  --info: #079ae31a;
+  --info-foreground: #d7f3fa;
+
+  --tip: #02f99920;
+  --tip-foreground: #d7faed;
+
+  --warn: #f0bb6c24;
+  --warn-foreground: #ede7da;
+
+  --danger: #f746391a;
+  --danger-foreground: #f7e5e4;
 
   --shadow-md: 0 6px 32px -8px rgba(40 40 40 / 0.2);
 }

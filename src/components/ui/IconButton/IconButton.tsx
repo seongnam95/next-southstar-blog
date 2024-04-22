@@ -46,7 +46,12 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ className, variant, size, circle, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
     return (
-      <Comp className={cn(iconButtonVariants({ variant, size, circle, className }))} ref={ref} {...props} />
+      <Comp
+        type="button"
+        className={cn(iconButtonVariants({ variant, size, circle, className }))}
+        ref={ref}
+        {...props}
+      />
     );
   },
 );

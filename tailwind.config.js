@@ -66,6 +66,22 @@ const config = {
         DEFAULT: 'var(--card)',
         foreground: 'var(--card-foreground)',
       },
+      info: {
+        DEFAULT: 'var(--info)',
+        foreground: 'var(--info-foreground)',
+      },
+      tip: {
+        DEFAULT: 'var(--tip)',
+        foreground: 'var(--tip-foreground)',
+      },
+      warn: {
+        DEFAULT: 'var(--warn)',
+        foreground: 'var(--warn-foreground)',
+      },
+      danger: {
+        DEFAULT: 'var(--danger)',
+        foreground: 'var(--danger-foreground)',
+      },
     },
     screens: { mobile: '768px', tablet: '1024px' },
     extend: {

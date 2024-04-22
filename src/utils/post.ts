@@ -6,6 +6,11 @@ export function getAllPosts(): Post[] {
   return allPosts.sort((a, b) => dateCompare(b.date, a.date));
 }
 
+export function getSeriesPosts(): Post[] {
+  const seriesPosts: Post[] = allPosts.filter((post) => post.series !== undefined);
+  return [];
+}
+
 export function getPostData(fileName: string): Post {
   const post = allPosts.find((post) => post.slug === fileName);
   if (!post) throw new Error(`${fileName}에 해당하는 포스트를 찾을 수 없음`);
