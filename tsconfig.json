@@ -22,7 +22,6 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@/ui*": ["./src/components/ui/*"],
       "contentlayer/generated": ["./.contentlayer/generated"],
       "contentlayer/generated/*": ["./.contentlayer/generated/*"]
     }

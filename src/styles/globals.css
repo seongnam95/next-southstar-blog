@@ -5,6 +5,10 @@
 @import 'theme.css';
 @import 'prose.css';
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 body > div:first-child {

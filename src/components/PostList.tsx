@@ -3,10 +3,10 @@ import React from 'react';
 import { Post } from 'contentlayer/generated';
 import Link from 'next/link';
 
-import { Badge } from '@/ui/Badge';
-import { Flex } from '@/ui/Flex';
-import { Heading } from '@/ui/Heading';
-import { Text } from '@/ui/Text';
+import { Badge } from '@/components/ui/Badge';
+import { Flex } from '@/components/ui/Flex';
+import { Heading } from '@/components/ui/Heading';
+import { Text } from '@/components/ui/Text';
 import { dateFormatter } from '@/utils/date';
 
 interface PostListProps {
