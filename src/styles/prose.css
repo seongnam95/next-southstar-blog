@@ -28,5 +28,14 @@
     figcaption[data-rehype-pretty-code-title] + pre {
       @apply mt-0 rounded-t-none;
     }
+
+    :not(pre) > code {
+      @apply mx-1 rounded-sm bg-muted px-2 py-1 font-normal;
+
+      &:before,
+      &:after {
+        content: none;
+      }
+    }
   }
 }

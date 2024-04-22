@@ -1,16 +1,15 @@
 ---
 title: Twin.macro 시작하기 (with. typescript, emotion, vite)
-date: 2024-01-01
 description: Tailwind CSS의 유틸리티 클래스와 CSS-in-JS를 동시에 사용하기
 tags: [React, TypeScript, TailwindCSS]
-series: TailwindCSS
+date: 2024-01-01
 ---
 
 ## 🙌 Twin.macro란?
 
-> emotion 또는 styled-components 작성 구문에 Tailwind CSS의 유틸리티 클래스를 사용할 수 있도록 돕는 라이브러리
+> `emotion` 또는 `styled-components` 작성 구문에 `Tailwind CSS`의 유틸리티 클래스를 사용할 수 있도록 돕는 라이브러리
 
-쉽게 말해, **Tailwind**의 **빠른 스타일링**과 css-in-js의 **유연성**을 **동시에** 누릴 수 있습니다.
+쉽게 말해, `Tailwind`의 **빠른 스타일링**과 `css-in-js`의 **유연성**을 동시에 누릴 수 있습니다.
 
 [twin.macro 공식문서](notion://www.notion.so/%22%3Chttps://github.com/ben-rogerson/twin.macro%3E%22)
 
@@ -28,8 +27,7 @@ yarn add twin.macro @emotion/babel-plugin-jsx-pragmatic @babel/plugin-transform-
 
 ### babel 구성
 
-```jsx
-// A) babel-plugin-macros.config.js
+```jsx title="A) babel-plugin-macros.config.js"
 export default {
   twin: {
     preset: 'emotion',
@@ -37,22 +35,19 @@ export default {
 };
 ```
 
-```jsx
-// B) package.json
+```jsx title="B) package.json"
 "babelMacros": {
   "twin": {
     "preset": "emotion"
   }
 },
-
 ```
 
 - \*A)**와 **B)\*\* 중 하나만 구성
 
 ### vite.config 설정
 
-```tsx
-// vite.config.ts
+```tsx title="vite.config.ts"
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
@@ -88,8 +83,7 @@ export default defineConfig({
 
 ### 타입 설정 (TypeScript)
 
-```tsx
-// types/twin.d.ts
+```tsx title="types/twin.d.ts"
 import { css as cssImport } from '@emotion/react';
 import { CSSInterpolation } from '@emotion/serialize';
 import styledImport from '@emotion/styled';
@@ -108,8 +102,7 @@ declare module 'react' {
 }
 ```
 
-```tsx
-// tsconfig.ts
+```tsx title="tsconfig.ts"
 {
   "compilerOptions": {
     // 기존 구성
@@ -119,17 +112,14 @@ declare module 'react' {
   // 기존 구성
   "include": ["src", "types"]
 }
-
 ```
 
 ### Tailwind CSS 지시문 추가
 
-```
-/* index.css */
+```css title="index.css"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 ```
 
 ## 🪄 사용방법

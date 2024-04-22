@@ -34,10 +34,14 @@ const PostCard = ({ post }: { post: Post }) => {
         </Text>
       </Flex>
 
-      <Link href={`/post/${post.slug}`}>
+      <Link className="group" href={`/blog/${post.slug}`}>
         <Flex direction="column">
           {/* Title */}
-          <Heading level="2" as="h2" className="mb-1.5">
+          <Heading
+            level="2"
+            as="h2"
+            className="mb-1.5 transition-colors duration-150 group-hover:text-primary"
+          >
             {post.title}
           </Heading>
 

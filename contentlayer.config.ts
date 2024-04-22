@@ -11,7 +11,7 @@ const postFields: FieldDefs = {
   title: { type: 'string', description: 'The title of the post', required: true },
   description: { type: 'string', required: true },
   date: { type: 'date', required: true },
-  series: { type: 'string' },
+  series: { type: 'string', required: false },
   tags: {
     type: 'list',
     required: true,

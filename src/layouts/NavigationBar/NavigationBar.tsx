@@ -10,9 +10,9 @@ const NavigationBar = () => {
 
   const menuItems = [
     {
-      key: 'post',
-      title: 'Post',
-      path: '/post',
+      key: 'blog',
+      title: 'Blog',
+      path: '/blog',
     },
     {
       key: 'about',

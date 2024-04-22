@@ -1,7 +1,7 @@
 :root {
   --primary: #7146fc;
   --primary-accent: #643ee1;
-  --primary-surface: #f6f6ffcc;
+  --primary-surface: #0000ff0f;
   --primary-foreground: #fff;
 
   --secondary: #121212;
@@ -52,9 +52,9 @@
 }
 
 .dark {
-  --primary: #774dfe;
-  --primary-accent: #6b3cee;
-  --primary-surface: #1d174380;
+  --primary: #b59eff;
+  --primary-accent: #bca5ff;
+  --primary-surface: #8152fe37;
   --primary-foreground: #fff;
 
   --secondary: #fafafa;
