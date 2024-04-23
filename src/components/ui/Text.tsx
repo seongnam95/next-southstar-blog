@@ -23,7 +23,7 @@ const textVariants = cva('text-foreground', {
     },
     muted: {
       false: '',
-      true: 'text-muted-foreground',
+      true: 'text-foreground-muted',
     },
     align: {
       left: 'text-left',

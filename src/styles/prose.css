@@ -23,7 +23,7 @@
   .prose {
     /* 인라인 코드 */
     :not(pre) > code {
-      @apply mx-1 rounded-sm bg-muted px-2 py-1 font-normal;
+      @apply bg-surface mx-1 rounded-sm px-2 py-1 font-normal;
 
       &:before,
       &:after {
@@ -33,7 +33,7 @@
 
     /* 코드 타이틀 */
     figcaption[data-rehype-pretty-code-title] {
-      @apply mt-3 rounded-t-lg bg-muted px-3 py-2 text-sm text-muted-foreground;
+      @apply bg-surface text-foreground-muted mt-3 rounded-t-lg px-3 py-2 text-sm;
       user-select: none;
     }
 
@@ -43,7 +43,7 @@
 
     /* 하이라이팅 */
     :where(mark):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-      @apply rounded-sm bg-muted px-1.5 py-0.5 text-foreground-accent;
+      @apply bg-surface rounded-sm px-1.5 py-0.5 text-foreground-accent;
     }
 
     /* 인용구 */

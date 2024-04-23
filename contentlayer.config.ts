@@ -2,6 +2,7 @@ import { ComputedFields, FieldDefs, defineDocumentType, makeSource } from 'conte
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
+import rehypeExternalLinks from 'rehype-external-links';
 import rehypePrettyCode, { type Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
@@ -54,6 +55,16 @@ export default makeSource({
     rehypePlugins: [
       rehypeSlug,
       rehypeCodeTitles,
+      [
+        rehypeExternalLinks,
+        {
+          properties: {
+            class: 'external-link',
+          },
+          target: '_blank',
+          rel: ['noopener noreferrer'],
+        },
+      ],
       [rehypePrettyCode as any, rehypeOptions],
       [
         rehypeAutolinkHeadings,

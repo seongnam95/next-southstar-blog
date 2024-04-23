@@ -21,7 +21,7 @@ const iconButtonVariants = cva(
         secondary: 'bg-secondary text-secondary-foreground border-transparent hover:bg-secondary-accent',
         outline: 'border-border-accent hover:border-secondary-accent',
         dashed: 'border-border-accent border-dashed hover:border-secondary-accent',
-        ghost: 'border-transparent hover:bg-muted',
+        ghost: 'border-transparent hover:bg-surface',
       },
       circle: {
         true: 'rounded-full',

@@ -24,14 +24,15 @@ const config = {
     colors: {
       transparent: 'transparent',
       currentColor: 'currentColor',
-      white: 'var(--white)',
-      black: 'var(--black)',
-      inner: 'var(--inner)',
+      white: '#fff',
+      black: '#121212',
+      surface: 'var(--surface)',
       ring: 'var(--ring)',
       background: 'var(--background)',
       foreground: {
         DEFAULT: 'var(--foreground)',
         accent: 'var(--foreground-accent)',
+        muted: 'var(--foreground-muted)',
       },
       primary: {
         DEFAULT: 'var(--primary)',
@@ -44,23 +45,9 @@ const config = {
         accent: 'var(--secondary-accent)',
         foreground: 'var(--secondary-foreground)',
       },
-      muted: {
-        DEFAULT: 'var(--muted)',
-        foreground: 'var(--muted-foreground)',
-      },
       border: {
         DEFAULT: 'var(--border)',
         accent: 'var(--border-accent)',
-      },
-      destructive: {
-        DEFAULT: 'var(--destructive)',
-        accent: 'var(--destructive-accent)',
-        foreground: 'var(--destructive-foreground)',
-      },
-      popover: {
-        DEFAULT: 'var(--popover)',
-        accent: 'var(--popover-accent)',
-        foreground: 'var(--popover-foreground)',
       },
       card: {
         DEFAULT: 'var(--card)',
@@ -84,15 +71,6 @@ const config = {
       },
     },
     screens: { mobile: '768px', tablet: '1024px' },
-    extend: {
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            maxWidth: '100%',
-          },
-        },
-      }),
-    },
   },
   plugins: [Typography],
 };

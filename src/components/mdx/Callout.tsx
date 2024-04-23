@@ -11,7 +11,7 @@ import { cn } from '@/lib/cn';
 const calloutVariants = cva('flex items-center gap-4 my-4 rounded-md px-4 py-3', {
   variants: {
     status: {
-      default: 'bg-muted',
+      default: 'bg-surface',
       info: 'bg-info text-info-foreground',
       tip: 'bg-tip text-tip-foreground',
       warn: 'bg-warn text-warn-foreground',
