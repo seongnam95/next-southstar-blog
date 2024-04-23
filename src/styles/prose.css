@@ -1,29 +1,8 @@
-:root {
-  .prose {
-    --tw-prose-body: var(--foreground);
-    --tw-prose-headings: var(--foreground-accent);
-    --tw-prose-lead: #4b5563;
-    --tw-prose-links: var(--foreground-accent);
-    --tw-prose-bold: var(--foreground-accent);
-    --tw-prose-counters: #6b7280;
-    --tw-prose-bullets: #d1d5db;
-    --tw-prose-hr: var(--border);
-    --tw-prose-quotes: var(--muted-foreground);
-    --tw-prose-quote-borders: var(--primary);
-    --tw-prose-captions: #6b7280;
-    --tw-prose-kbd: var(--foreground-accent);
-    --tw-prose-kbd-shadows: 17 24 39;
-    --tw-prose-code: var(--foreground-accent);
-    --tw-prose-pre-code: var(--foreground);
-    --tw-prose-pre-bg: var(--muted);
-    --tw-prose-th-borders: var(--border);
-    --tw-prose-td-borders: var(--border-accent);
-  }
-
-  .prose {
+@layer base {
+  .post {
     /* 인라인 코드 */
     :not(pre) > code {
-      @apply bg-surface mx-1 rounded-sm px-2 py-1 font-normal;
+      @apply mx-1 rounded-sm bg-surface px-2 py-1 font-normal;
 
       &:before,
       &:after {
@@ -33,7 +12,7 @@
 
     /* 코드 타이틀 */
     figcaption[data-rehype-pretty-code-title] {
-      @apply bg-surface text-foreground-muted mt-3 rounded-t-lg px-3 py-2 text-sm;
+      @apply mt-3 rounded-t-lg bg-surface px-3 py-2 text-sm text-foreground-muted;
       user-select: none;
     }
 
@@ -43,7 +22,7 @@
 
     /* 하이라이팅 */
     :where(mark):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-      @apply bg-surface rounded-sm px-1.5 py-0.5 text-foreground-accent;
+      @apply rounded-sm bg-surface px-1.5 py-0.5 text-foreground-accent;
     }
 
     /* 인용구 */

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import 'theme.css';
-@import 'prose.css';
+/* @import 'prose.css'; */
 
 * {
   box-sizing: border-box;
@@ -21,23 +21,180 @@ button {
   outline: 0;
 }
 
-[data-rehype-pretty-code-figure] pre {
-  overflow-x: auto;
-  padding: 1rem 0;
-}
-
-[data-rehype-pretty-code-figure] [data-line] {
-  padding: 0 1.5rem;
-}
-
 @layer base {
   body {
     @apply bg-background text-foreground;
   }
-}
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .post {
+    @apply text-base leading-7 text-foreground;
+
+    & > * {
+      @apply mb-7;
+    }
+  }
+
+  .post > :where(h1, h2, h3, h4) {
+    @apply font-semibold text-foreground-accent;
+  }
+
+  .post > h2 {
+    @apply mt-24 text-xl leading-9;
+  }
+
+  .post > h3 {
+    @apply mt-16 text-lg leading-8;
+  }
+
+  .post > h4 {
+    @apply mt-14 text-base;
+  }
+
+  .post > h2 + * {
+    @apply mt-0;
+  }
+
+  .post > h3 + * {
+    @apply mt-0;
+  }
+
+  /* 링크 */
+  .post a {
+    @apply text-foreground-accent underline decoration-border-accent underline-offset-2;
+
+    &.external-link {
+      &::after {
+        @apply ml-1 inline-block h-3 w-3 align-middle content-[''];
+        background: url('data:image/svg+xml, <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="%23374151" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="%23374151" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>');
+      }
+    }
+  }
+
+  .dark .post a.external-link {
+    &::after {
+      background: url('data:image/svg+xml, <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="%23b0b0b0" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="%23b0b0b0" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>');
+    }
+  }
+
+  /* 강조 */
+  .post strong {
+    @apply font-medium text-foreground-accent;
+  }
+
+  /* 하이라이팅 */
+  .post mark {
+    @apply rounded-md bg-surface px-2 py-0.5 text-foreground-accent;
+  }
+
+  /* 리스트 */
+  .post > ul {
+    @apply list-outside list-disc ps-5;
+
+    & > li ul {
+      @apply list-circle list-outside ps-4;
+    }
+  }
+
+  .post > ol {
+    @apply list-decimal ps-5;
+
+    li {
+      @apply ps-1.5;
+    }
+  }
+
+  .post li {
+    @apply list-item marker:text-foreground-muted;
+
+    li {
+      @apply mt-1;
+    }
+  }
+
+  /* 인용구 */
+  .post > blockquote {
+    @apply relative;
+    --quote-offset: 3px;
+    quotes: '“' '”' '‘' '’';
+
+    &:before {
+      @apply absolute translate-x-[-100%];
+      content: open-quote;
+      left: calc(-1 * var(--quote-offset));
+    }
+
+    :last-child:after {
+      @apply ml-[var(--quote-offset)];
+      content: close-quote;
+    }
+  }
+
+  /* 인라인 코드 */
+  .post code:not(pre code) {
+    @apply text-sm font-semibold text-foreground-accent;
+  }
+
+  .post code:not(pre code, [data-rehype-pretty-code-fragment] code):before {
+    @apply content-['`'];
+  }
+
+  .post code:not(pre code, [data-rehype-pretty-code-fragment] code):after {
+    @apply content-['`'];
+  }
+
+  /* 코드블럭 */
+  .post [data-rehype-pretty-code-figure] pre {
+    @apply overflow-x-auto rounded-md py-3 text-sm;
+  }
+
+  .post [data-rehype-pretty-code-figure] [data-line] {
+    @apply px-4;
+  }
+
+  /* 코드블럭 타이틀 */
+  .post [data-rehype-pretty-code-title] {
+    @apply mt-3 select-none rounded-t-md bg-surface px-3 py-1 text-sm text-foreground-muted;
+  }
+
+  .post [data-rehype-pretty-code-title] + pre {
+    @apply mt-0 rounded-md rounded-t-none;
+  }
+
+  /* 코드블럭 캡션 */
+  .post [data-rehype-pretty-code-caption] {
+    @apply mb-4 ml-1.5 text-sm text-foreground-muted;
+  }
+
+  /* 코드블럭 라인 하이라이트 */
+  .post [data-highlighted-line] {
+    @apply bg-surface;
+  }
+
+  .post [data-highlighted-line-id='minus'] {
+    @apply bg-red-surface relative after:absolute after:left-0 after:ml-1 after:font-normal after:content-['-'];
+  }
+
+  .post [data-highlighted-line-id='plus'] {
+    @apply bg-blue-surface relative after:absolute after:left-[1px] after:top-[2px] after:ml-1 after:text-xs after:font-normal after:content-['+'];
+  }
+
+  .post [data-highlighted-chars] {
+    @apply rounded-none px-1 py-0 font-normal text-transparent;
+  }
+
+  .post [data-chars-id='red'] {
+    @apply bg-red-surface;
+  }
+
+  .post [data-chars-id='blue'] {
+    @apply bg-blue-surface;
+  }
+
+  .post [data-chars-id='green'] {
+    @apply bg-green-surface;
+  }
+
+  .post [data-chars-id='yellow'] {
+    @apply bg-yellow-surface;
   }
 }

@@ -7,7 +7,7 @@ interface ContentProps {
 }
 
 const Content = ({ children }: ContentProps) => {
-  return <div className={cn('m-auto mt-20 min-h-full max-w-[700px] p-6')}>{children}</div>;
+  return <div className={cn('m-auto mt-28 min-h-full max-w-[700px] p-6')}>{children}</div>;
 };
 
 export default Content;

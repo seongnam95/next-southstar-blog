@@ -9,8 +9,8 @@ import { ComponentPropsWithout, RemovedProps } from '@/types/component_props';
 const headingVariants = cva('scroll-mt-6 text-foreground-accent', {
   variants: {
     level: {
-      '1': 'text-3xl',
-      '2': 'text-2xl',
+      '1': 'text-2xl',
+      '2': 'text-xl',
       '3': 'text-lg',
       '4': 'text-base',
       '5': 'text-sm',

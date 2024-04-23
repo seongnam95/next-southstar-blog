@@ -12,10 +12,10 @@ const calloutVariants = cva('flex items-center gap-4 my-4 rounded-md px-4 py-3',
   variants: {
     status: {
       default: 'bg-surface',
-      info: 'bg-info text-info-foreground',
-      tip: 'bg-tip text-tip-foreground',
-      warn: 'bg-warn text-warn-foreground',
-      danger: 'bg-danger text-info-foreground',
+      info: 'bg-blue-surface text-blue-foreground',
+      tip: 'bg-green-surface text-green-foreground',
+      warn: 'bg-yellow-surface text-yellow-foreground',
+      danger: 'bg-red-surface text-blue-foreground',
     },
   },
   defaultVariants: {
@@ -39,7 +39,7 @@ const Callout = ({ className, status, ...props }: CalloutProps) => {
   return (
     <div className={cn(calloutVariants({ status }), className)} {...props}>
       <div className="text-lg">{status && StatusIcon[status]}</div>
-      <div className="prose text-sm leading-6">{props.children}</div>
+      <div className="text-sm leading-6">{props.children}</div>
     </div>
   );
 };

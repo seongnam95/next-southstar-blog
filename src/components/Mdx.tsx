@@ -8,7 +8,7 @@ const Mdx = ({ code }: { code: string }) => {
   const Component = useMDXComponent(code);
 
   return (
-    <article className="prose break-keep prose-a:break-all">
+    <article className="post">
       <Component
         components={{
           Callout: (props) => <Callout {...props} />,

@@ -13,17 +13,17 @@ export default function PostPage({ params }: { params: { slug: string[] } }) {
 
   return (
     <div>
-      <div className="mb-20">
-        <Heading level="1" className="mb-2">
+      <div className="mb-20 border-b border-b-border-accent pb-2">
+        <Heading level="2" className="mb-1">
           {post.title}
         </Heading>
 
-        <Text as="p" muted className="mb-4">
+        <Text as="p" className="mb-4">
           {post.description}
         </Text>
 
         <Text size="sm" muted>
-          <time dateTime={post.date}>{dateFormatter(post.date, 'YYYY-MM-DD')}</time>· {post.readingTime}min
+          <time dateTime={post.date}>{dateFormatter(post.date, 'YYYY-MM-DD')}</time>· {post.readingTime} min
         </Text>
       </div>
 

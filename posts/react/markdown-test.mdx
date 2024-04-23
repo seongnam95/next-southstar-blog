@@ -39,8 +39,8 @@ _This is italic text_
 ## Blockquotes
 
 > Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+> ...by using additional greater-than signs right next to each other...
+> ...or with spaces between arrows.
 
 
 ## Lists
@@ -54,6 +54,7 @@ Unordered
     + Facilisis in pretium nisl aliquet
     - Nulla volutpat aliquam velit
 + Very easy!
+
 
 Ordered
 
@@ -81,8 +82,10 @@ Sample text here...
 
 Syntax highlighting
 
-``` js
+
+```js {2}#minus {3}#plus title="foo.js" caption="code block caption" /foo/1#yellow
 var foo = function (bar) {
+  return bar;
   return bar++;
 };
 
@@ -117,20 +120,6 @@ Right aligned columns
 Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 
 
-## Images
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
-
-
 ## Plugins
 
 The killer feature of `markdown-it` is very effective support of
@@ -145,9 +134,9 @@ The killer feature of `markdown-it` is very effective support of
 see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
 
 
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+### mark
 
-==Marked text==
+<mark>Marked text</mark>
 
 
 ### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
@@ -204,3 +193,18 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ::: warning
 *here be dragons*
 :::
+
+
+
+## Images
+
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+
+Like links, Images also have a footnote style syntax
+
+![Alt text][id]
+
+With a reference later in the document defining the URL location:
+
+[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"

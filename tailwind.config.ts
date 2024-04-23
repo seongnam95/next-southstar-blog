@@ -1,26 +1,17 @@
-import Typography from '@tailwindcss/typography';
+import { Config } from 'tailwindcss';
 
-const numToRem = (num) => `${(num / 0.5) * 0.125}rem`;
-const pxToRem = (px, base = 16) => `${px / base}rem`;
-const range = (start, end, unit = 1) => {
+const numToRem = (num: number) => `${(num / 0.5) * 0.125}rem`;
+const pxToRem = (px: number, base = 16) => `${px / base}rem`;
+const range = (start: number, end: number, unit = 1) => {
   const length = Math.ceil((end - start) / unit + 1);
   return Array.from({ length }, (_, i) => start + i * unit);
 };
 
-const config = {
+const config: Config = {
   darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    spacing: {
-      ...range(1, 100).reduce((acc, px) => {
-        acc[`${px}pxr`] = pxToRem(px);
-        return acc;
-      }, {}),
-      ...range(0, 50, 0.5).reduce((acc, px) => {
-        acc[`${px}`] = numToRem(px);
-        return acc;
-      }, {}),
-    },
+    screens: { mobile: '768px', tablet: '1024px' },
     colors: {
       transparent: 'transparent',
       currentColor: 'currentColor',
@@ -53,25 +44,38 @@ const config = {
         DEFAULT: 'var(--card)',
         foreground: 'var(--card-foreground)',
       },
-      info: {
-        DEFAULT: 'var(--info)',
-        foreground: 'var(--info-foreground)',
+      blue: {
+        DEFAULT: 'var(--blue)',
+        surface: 'var(--blue)',
+        foreground: 'var(--blue-foreground)',
       },
-      tip: {
-        DEFAULT: 'var(--tip)',
-        foreground: 'var(--tip-foreground)',
+      green: {
+        DEFAULT: 'var(--green)',
+        surface: 'var(--green)',
+        foreground: 'var(--green-foreground)',
       },
-      warn: {
-        DEFAULT: 'var(--warn)',
-        foreground: 'var(--warn-foreground)',
+      yellow: {
+        DEFAULT: 'var(--yellow)',
+        surface: 'var(--yellow)',
+        foreground: 'var(--yellow-foreground)',
       },
-      danger: {
-        DEFAULT: 'var(--danger)',
-        foreground: 'var(--danger-foreground)',
+      red: {
+        DEFAULT: 'var(--red)',
+        surface: 'var(--red)',
+        foreground: 'var(--red-foreground)',
       },
     },
-    screens: { mobile: '768px', tablet: '1024px' },
+    extend: {
+      spacing: {
+        ...range(1, 100).reduce((acc: { [key: string]: string }, px) => {
+          acc[`${px}pxr`] = pxToRem(px);
+          return acc;
+        }, {}),
+      },
+      listStyleType: {
+        circle: 'circle',
+      },
+    },
   },
-  plugins: [Typography],
 };
 export default config;
