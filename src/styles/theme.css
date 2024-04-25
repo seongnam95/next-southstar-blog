@@ -7,7 +7,7 @@
 
   --foreground: #374151;
   --foreground-accent: #111827;
-  --foreground-muted: #8f8f8fb9;
+  --foreground-muted: #484848b9;
 
   --primary: #7146fc;
   --primary-accent: #643ee1;
@@ -34,10 +34,10 @@
   --background: #1a1a1b;
   --surface: #d6e2f916;
 
-  --border: #222325;
+  --border: #2d2e30;
   --border-accent: #46484f;
 
-  --foreground: #b0b0b0;
+  --foreground: #b7b7b7;
   --foreground-accent: #ebebeb;
   --foreground-muted: #959595b9;
 
