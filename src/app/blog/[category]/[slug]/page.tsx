@@ -1,14 +1,18 @@
-import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 
-import Mdx from '@/components/Mdx';
+import ContentMDX from '@/components/ContentMDX';
 import { Flex } from '@/components/ui/Flex';
 import { Heading } from '@/components/ui/Heading';
 import { Text } from '@/components/ui/Text';
 import { dateFormatter } from '@/utils/date';
+import { getPostDetail } from '@/utils/post';
 
-export default function PostPage({ params }: { params: { slug: string[] } }) {
-  const post = allPosts.find((post) => post.slug === params.slug.join('/'));
+type Props = {
+  params: { category: string; slug: string };
+};
+
+const PostPage = async ({ params: { category, slug } }: Props) => {
+  const post = await getPostDetail(category, slug);
   if (!post) notFound();
 
   return (
@@ -23,11 +27,13 @@ export default function PostPage({ params }: { params: { slug: string[] } }) {
         </Text>
 
         <Text size="sm" muted>
-          <time dateTime={post.date}>{dateFormatter(post.date, 'YYYY-MM-DD')}</time>· {post.readingTime} min
+          {/* <time dateTime={post.date}>{dateFormatter(post.date, 'YYYY-MM-DD')}</time>· {post.readingTime} min */}
         </Text>
       </div>
 
-      <Mdx code={post.body.code} />
+      <ContentMDX post={post} />
     </div>
   );
-}
+};
+
+export default PostPage;

@@ -1,32 +1,17 @@
 import { FiSearch } from 'react-icons/fi';
 
 import PostList from '@/components/PostList';
+import PostTabContent from '@/components/PostTabContent';
 import { Flex } from '@/components/ui/Flex';
 import { Input } from '@/components/ui/Input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
-import { getAllPosts } from '@/utils/post';
 
-const BlogPage = () => {
-  const posts = getAllPosts();
-
+const Blog = async () => {
   return (
-    <Tabs defaultValue="post">
-      <Flex justify="between" align="center" className="mb-12">
-        <TabsList>
-          <TabsTrigger value="post">글</TabsTrigger>
-          <TabsTrigger value="series">시리즈</TabsTrigger>
-          <TabsTrigger value="tag">태그</TabsTrigger>
-        </TabsList>
-        <Input variant="filled" icon={<FiSearch />} />
-      </Flex>
-
-      <TabsContent value="post">
-        <PostList posts={posts} />
-      </TabsContent>
-      <TabsContent value="series">시리즈</TabsContent>
-      <TabsContent value="tag">태그</TabsContent>
-    </Tabs>
+    <div>
+      <PostList />
+    </div>
   );
 };
 
-export default BlogPage;
+export default Blog;

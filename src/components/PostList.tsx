@@ -1,25 +1,45 @@
 import React from 'react';
 
-import { Post } from 'contentlayer/generated';
 import Link from 'next/link';
 
 import { Badge } from '@/components/ui/Badge';
 import { Flex } from '@/components/ui/Flex';
 import { Heading } from '@/components/ui/Heading';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 import { Text } from '@/components/ui/Text';
+import { Post } from '@/types/post';
 import { dateFormatter } from '@/utils/date';
+import { getAllPostCount, getCategoryDetailList, getSortedPostList } from '@/utils/post';
 
 interface PostListProps {
-  posts: Post[];
+  category?: string;
 }
 
-const PostList = ({ posts }: PostListProps) => {
+const PostList = async ({ category }: PostListProps) => {
+  const postList = await getSortedPostList(category);
+  const categories = await getCategoryDetailList();
+  console.log(categories);
+  const allPostCount = await getAllPostCount();
+
   return (
-    <ul className="overflow-y-auto">
-      {posts.map((post) => (
-        <PostCard key={post._id} post={post} />
-      ))}
-    </ul>
+    <div>
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Theme" />
+        </SelectTrigger>
+        <SelectContent>
+          {categories.map((category) => (
+            <SelectItem value={category.publicName}>{category.publicName}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+
+      <ul className="overflow-y-auto">
+        {postList.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </ul>
+    </div>
   );
 };
 
@@ -30,7 +50,6 @@ const PostCard = ({ post }: { post: Post }) => {
       <Flex gap="1">
         <Text size="sm" muted className="mb-1" as="p">
           {dateFormatter(post.date)}
-          {post.series && ` · ${post.series}`}
         </Text>
       </Flex>
 
@@ -39,16 +58,11 @@ const PostCard = ({ post }: { post: Post }) => {
           {/* Title */}
           <Heading
             level="2"
-            as="h2"
+            as="h1"
             className="mb-1.5 transition-colors duration-150 group-hover:text-primary"
           >
             {post.title}
           </Heading>
-
-          {/* Content */}
-          <Text muted as="p">
-            {post.description}
-          </Text>
         </Flex>
       </Link>
 
